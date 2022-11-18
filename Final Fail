@@ -1,0 +1,115 @@
+time = 0
+mood = 10
+play = time
+hunger = 10
+age = 0
+bread = 1
+meteor_point = 0
+
+choice = None
+
+name = input("Имя вашего пета? ")
+
+
+while choice == None:
+  print("""
+  Это меню вашего питомца
+
+  0 - Выйти
+  1 - Поговорить
+  2 - Покормить
+  3 - Поиграть
+  4 - Пойти в магаз
+  5 - Отправить пета в подвал
+  6 - Морить пета голодом
+  7 - Отобрать у пета телефон
+  
+  """)
+  choice = input("Ваш выбор? ")
+
+  if choice == "0":
+    print("Пока!")
+    break
+  elif choice == "1":
+    print("Привет меня зовут", name, "у меня", hunger, "еды и моё настроение на все", mood, "баллов Мой возраст", age)
+    hunger = hunger - 1
+    mood = mood - 1
+    age = age + 1
+    
+    choice = None
+  elif choice == "2":
+    if bread > 0:
+      print("Вы покормили ", name)
+      print("У вас осталось", bread, "еды")
+      hunger = hunger + 1
+      if hunger >= 10:
+        hunger = 10
+      mood = mood - 1
+      age = age + 1
+      bread = bread - 1
+      choice = None
+    else:
+      print("У вас нет еды")
+      mood = mood - 1
+      age = age + 1
+      hunger = hunger - 1
+      choice = None
+  elif choice == "3":
+    time = input("Сколько вы хотите играть?")
+    mood + play
+    if mood >= 0:
+      mood = 10
+    print("Вы поиграли с", name , time, "минут!")
+    hunger = hunger - 1
+    age = age + 1
+    choice = None
+  elif choice == "4":
+    print("Вы пошли в магазин")
+    print("У вас стало", bread, "еды")
+    bread = bread + 1
+    mood = mood - 2
+    age = age + 2
+    hunger = hunger - 2
+    choice = None
+  elif choice == "5":
+    print("Вы отправили", name, "в подвал")
+    print("Вы получили 1 очко ада")
+    meteor_point = meteor_point + 1
+    mood = mood - 1
+    age = age + 1
+    hunger = hunger - 1
+    choice = None
+  elif choice == "6":
+    print("Вы морили", name, "Голодом")
+    print("Вы получили 2 очка ада")
+    meteor_point = meteor_point + 2
+    mood = mood - 1
+    age = age + 1
+    hunger = hunger - 1
+    choice = None
+  elif choice == "7":
+    print("Вы отобрали у", name, "телефон")
+    print("Вы получили 4 очка ада")
+    meteor_point = meteor_point + 4
+    mood = mood - 1
+    age = age + 1
+    hunger = hunger - 1
+    choice = None
+  else:
+    print("Нету пункта", choice)
+  
+  if hunger == 0:
+    print("Вы убили", name, "!")
+    break
+  if mood == 0:
+    print("Вы убили", name, "!")
+    break
+  if meteor_point == 5:
+    print("На вас упал метеор")
+    print("Вы попали в ад а", name, "Попал в рай")
+    print("За что? Сказал я")
+    print("Я бы сказал что за грехи но мне просто скучно")
+    break
+  if age >= 20:
+    print(name, "Счастливо умер!")
+    
